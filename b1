@@ -1,0 +1,47 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package b1;
+
+/**
+ *
+ * @author Minh Chien
+ */
+public class Pro1 {
+
+   public static void main(String[] arg){
+       //tạo mảng 20 phần tử
+        int [] fibo = new int[20];
+        System.out.println("mang gồm: "+fibo.length+" phần tử");
+       // gán giá trị
+                fibo[0]=1;
+                fibo[1]=2;    
+        for(int i=0;i<20;i++){
+            //các phần tử tiếp theo index<10
+            if(i<10&&i>1)
+                fibo[i]=fibo[i-1]+fibo[i-2];
+            //các phần tử tiếp theo index>=10 và fibo[index]<150
+            else if(i>=10 ){
+                {
+                fibo[i]= fibo[i-3]+fibo[i-1]+fibo[i-2];
+                }
+                //fibo[index]>150
+                    if(fibo[i]>150)
+                        fibo[i]=0;               
+                 break;
+                   }     
+        }
+        //in dãy
+          for (int i = 0; i < 20; i++) {
+                   
+                       System.out.print(fibo[i] + " ");
+                                      
+            }          
+
+        }
+    }
+
+
+
