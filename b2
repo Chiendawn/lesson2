@@ -1,0 +1,98 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package b2;
+
+import java.util.Random;
+
+/**
+ *
+ * @author Minh Chien
+ */
+// lập hàm sắp xếp chèn
+public class Pro2 {
+    public void sapxep(int randArray[]){
+        int a;
+        int b;
+        int i;
+        for(i=1;i<randArray.length;i++){
+            a=randArray[i];
+            b=i;
+            
+            while(b>0&&randArray[b-1]>a)
+            {
+                randArray[b]=randArray[b-1];
+                b--;
+            }
+            if(b!=i){
+                randArray[b]=a;
+            }
+        }
+    }
+    //lập hàm số chẵn
+    public void evenNumbers(int randArray[]){
+        int i;
+        for(i=0;i<randArray.length;i++){
+            if(randArray[i]%2==0){
+                System.out.print(randArray[i]+", \n");
+            }
+                
+        }
+    }
+    //lập hàm xác định SNT
+      public static boolean isPrimeNumber(int n) {
+        // so nguyen n < 2 khong phai la so nguyen to
+        if (n < 2) {
+            return false;
+        }
+        // check so nguyen to khi n >= 2
+        int squareRoot = (int) Math.sqrt(n);
+        for (int i = 2; i <= squareRoot; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+     
+    
+    
+    public static void main(String[] arg){
+        int [] randArray = new int[41];
+        //gán biến cho hàm không chứa static
+        Pro2 obj = new Pro2();
+        Pro2 sub = new Pro2();
+        
+        
+        int i = 0;
+        Random rand = new Random();
+        for(i=0;i<randArray.length;i++){
+        randArray[i] = rand.nextInt();
+            }
+        // in ra sô nguyên âm
+        for(i=0;i<randArray.length;i++){
+            if(randArray[i]<0){
+                sub.sapxep(randArray); 
+                System.out.print("số nguyên âm: ");
+                System.out.println( " " +randArray[i] );
+           }
+        }
+        //in ra số chẵn bằng gọi hàm 
+        System.out.println("số chẵn: ");
+       obj.evenNumbers(randArray);
+       //in ra số nguyên tố
+      
+    
+       //in ra tổng các số nguyên tố
+       System.out.println("Tổng SNT: ");
+        int sum = 0;
+        for (i = 0; i < randArray.length; i++) {
+            if (isPrimeNumber(randArray[i])) {
+                sum += randArray[i];
+            }
+        }
+        System.out.println("tong="+sum);
+    }
+}
